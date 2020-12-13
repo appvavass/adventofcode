@@ -5,6 +5,8 @@ passport = open('input.txt')
 plist = []
 bufferrow = []
 
+#Här lägger jag till en rad
+
 for row in passport:
     if row != '\n':
         row = row.rstrip('\n')
