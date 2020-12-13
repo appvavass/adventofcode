@@ -34,6 +34,10 @@ for line in fhandler:
 
 print('maximum seat ID {}'.format(max(seat_ID_list)))
 
+with open('seat_list.txt','w') as handler:
+    for e in seat_ID_list:
+        handler.write('{}\n'.format(e))
+
 # test1 = 'BFFFBBFRRR'
 # test2 = 'FFFBBBFRRR'
 # test3 = 'BBFFBBFRLL'
