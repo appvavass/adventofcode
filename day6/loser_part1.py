@@ -28,7 +28,7 @@ for e in group_ans:
         if letter not in comparator:
             comparator.append(letter)
         else: continue
-    print(comparator)
+    #print(comparator)
     score = len(comparator)
     total_yes = total_yes + score
 
