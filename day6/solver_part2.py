@@ -1,4 +1,4 @@
-inp_fil = open('input.txt')
+inp_fil = open('input.txt') ##make sure input.txt has an additional \n at the end
 
 big_ans = []
 group_ans = []
