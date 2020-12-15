@@ -26,9 +26,9 @@ iterate = True
 validbags =  ['.*shiny gold.*']
 it = 1
 bag_to_skip = []
-
+list_len = {}
 while iterate is True: 
-    check1 = validbags
+    iterator_key = validbags
     #print('check1:',check1)
     #print('valid bags:', validbags)
     validbags_new = []
@@ -39,26 +39,27 @@ while iterate is True:
                 if re.search(color, e):
                     to_append = str(key)
                     to_append = '.*' + to_append + '.*'
-                    if to_append not in validbags_new:
+                    if to_append not in validbags_new and to_append not in bag_to_skip:
                         validbags_new.append(to_append)
-                    #print('iteration {}, found this colors {}'.format(it, validbags_new))
+                        #print('iteration {}, found this colors {}'.format(it, validbags_new))
     bag_to_skip  = bag_to_skip + validbags
+
     #print('bags to skip:', bag_to_skip)
     #print('new valid bags:', validbags_new)
     validbags = validbags_new
-    validbags_new = []
-    if check1 == validbags:
+    if iterator_key == validbags:
         iterate = False
     #print('2nd check',check1)
+    list_len[it] = len(validbags_new)
     it = it + 1
-    
-bag_to_skip.sort()
+    #print(list_len)
+    #input('enter................')
 
-print(bag_to_skip)
-    
-    
-print('puzzle answer is',len(bag_to_skip)-1)
+bag_to_skip.sort()
 #print(bag_to_skip)
+print(list_len)   
+print('puzzle answer is',len(bag_to_skip)-1)
+
 
 
 
