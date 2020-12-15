@@ -1,6 +1,6 @@
 import re
 
-fhandle = open('input.txt')
+fhandle = open('input_test.txt')
 lst_bag = {}
 lst_rules = []
 
@@ -22,11 +22,14 @@ for row in fhandle:
 #print(lst_bag)
 
 #check how many bags can contain directly the shiny gold
-new_len = -1
-old_len = 10
-while new_len != old_len: 
-    validbags =  ['.*shiny gold.*']
-    old_len = len(validbags)
+iterate = True
+validbags =  ['.*shiny gold.*']
+it = 1
+while iterate is True: 
+    check1 = validbags
+    print('check1:',check1)
+    print('valid bags:', validbags)
+    validbags_new = validbags
     for key in lst_bag:
         check = lst_bag.get(key)
         for e in check:
@@ -34,9 +37,19 @@ while new_len != old_len:
                 if re.search(color, e):
                     to_append = str(key)
                     to_append = '.*' + to_append + '.*'
-                    validbags.append(to_append)
-    new_len =  len(validbags)
-print(validbags)
+                    if to_append not in validbags:
+                        print('appending:', to_append)
+                        validbags_new.append(to_append)
+    print('valid bags:', validbags)
+    if check1 == validbags:
+        iterate = False
+    print(it)
+    print('2nd check',check1)
+    it = it + 1
+    
+  
+    
+print('puzzle answer is',len(validbags)-1)
 
 
 
