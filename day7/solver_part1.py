@@ -22,14 +22,20 @@ for row in fhandle:
 #print(lst_bag)
 
 #check how many bags can contain directly the shiny gold
-validbags =  ['.*shiny gold.*']
-for key in lst_bag:
-    check = lst_bag.get(key)
-    for e in check:
-        if re.search('.*shiny gold.*', e):
-            to_append = str(key)
-            to_append = '.*' + to_append + '.*'
-            validbags.append(to_append)
+new_len = -1
+old_len = 10
+while new_len != old_len: 
+    validbags =  ['.*shiny gold.*']
+    old_len = len(validbags)
+    for key in lst_bag:
+        check = lst_bag.get(key)
+        for e in check:
+            for color in validbags:
+                if re.search(color, e):
+                    to_append = str(key)
+                    to_append = '.*' + to_append + '.*'
+                    validbags.append(to_append)
+    new_len =  len(validbags)
 print(validbags)
 
 
