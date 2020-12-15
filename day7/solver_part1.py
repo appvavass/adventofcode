@@ -16,7 +16,7 @@ for row in fhandle:
     bag_color = bag_color[0]
     row[1] = row[1].rstrip('.\n')
     rule = row[1]
-    right_pattern = '([a-z]+\s[a-z]+)' ## two words
+    right_pattern = '[0-9]+\s([a-z]+\s[a-z]+)' ## two words
     ruleset  = re.findall(right_pattern, rule)
     #rule = rule.split(',')
     #lst_bag[bag_color] = rule
