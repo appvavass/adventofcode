@@ -25,7 +25,8 @@ for row in fhandle:
 #print('length of rules:',len(lst_bag))
 print(lst_bag)
 ################
-
+tup = (1, 4)
+print(tup[0])
 def bagcounter(dictionary,color):
 
 
