@@ -5,7 +5,7 @@ lst_bag = {}
 lst_rules = []
 
 ########################################################
-#divide in bag - rules and create a dictionary {bag color: bag rules}
+#divide in bag - rules and create a dictionary {bag color: bag rules (string)}
 ########################################################
 
 for row in fhandle:
