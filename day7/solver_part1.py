@@ -1,6 +1,6 @@
 import re
 
-fhandle = open('input_test.txt')
+fhandle = open('input.txt')
 lst_bag = {}
 lst_rules = []
 
@@ -19,17 +19,19 @@ for row in fhandle:
     #lst_bag[bag_color] = rule
     if len(ruleset) > 0:
         lst_bag[bag_color] = ruleset
-#print(lst_bag)
+#print('length of rules:',len(lst_bag))
 
 #check how many bags can contain directly the shiny gold
 iterate = True
 validbags =  ['.*shiny gold.*']
 it = 1
+bag_to_skip = []
+
 while iterate is True: 
     check1 = validbags
-    print('check1:',check1)
-    print('valid bags:', validbags)
-    validbags_new = validbags
+    #print('check1:',check1)
+    #print('valid bags:', validbags)
+    validbags_new = []
     for key in lst_bag:
         check = lst_bag.get(key)
         for e in check:
@@ -37,19 +39,26 @@ while iterate is True:
                 if re.search(color, e):
                     to_append = str(key)
                     to_append = '.*' + to_append + '.*'
-                    if to_append not in validbags:
-                        print('appending:', to_append)
+                    if to_append not in validbags_new:
                         validbags_new.append(to_append)
-    print('valid bags:', validbags)
+                    #print('iteration {}, found this colors {}'.format(it, validbags_new))
+    bag_to_skip  = bag_to_skip + validbags
+    #print('bags to skip:', bag_to_skip)
+    #print('new valid bags:', validbags_new)
+    validbags = validbags_new
+    validbags_new = []
     if check1 == validbags:
         iterate = False
-    print(it)
-    print('2nd check',check1)
+    #print('2nd check',check1)
     it = it + 1
     
-  
+bag_to_skip.sort()
+
+print(bag_to_skip)
     
-print('puzzle answer is',len(validbags)-1)
+    
+print('puzzle answer is',len(bag_to_skip)-1)
+#print(bag_to_skip)
 
 
 
