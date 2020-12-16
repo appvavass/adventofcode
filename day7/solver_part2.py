@@ -1,6 +1,6 @@
 import re
 
-fhandle = open('input.txt')
+fhandle = open('input_test.txt')
 lst_bag = {}
 lst_rules = []
 
@@ -22,12 +22,30 @@ for row in fhandle:
     #lst_bag[bag_color] = rule
     if len(ruleset) > 0:
         lst_bag[bag_color] = ruleset
-#print('length of rules:',len(lst_bag))
-print(lst_bag)
-################
-tup = (1, 4)
-print(tup[0])
-def bagcounter(dictionary,color):
+#print(lst_bag)
+
+def bagcounter(dictionary,colors):
+## This function goes trhough the dictionary and look for the input colors, 
+# return what those colors must contain 
+    sum_of_bags = 0
+    new_colors = []
+    return_dict = {}
+    for color in colors:
+        value = dictionary.get(color)
+        for e in value:
+            n_bag = e[0]
+            color_bags = e[1]
+            if color_bags not in new_colors:
+                new_colors.append(color_bags)
+                return_dict[color_bags]  = int(n_bag)
+ 
+    return return_dict
+
+init_clue = ['shiny gold']
+totalbags = 0
 
 
-    return out_dict  # in form of color:bags to be contained in it
+answer = bagcounter(lst_bag,init_clue)
+    
+
+print(answer)
