@@ -1,6 +1,6 @@
 import re
 
-fhandle = open('input_test.txt')
+fhandle = open('input.txt')
 lst_bag = {}
 lst_rules = []
 
@@ -27,25 +27,35 @@ for row in fhandle:
 def bagcounter(dictionary,colors):
 ## This function goes trhough the dictionary and look for the input colors, 
 # return what those colors must contain 
-    sum_of_bags = 0
     new_colors = []
     return_dict = {}
     for color in colors:
         value = dictionary.get(color)
-        for e in value:
-            n_bag = e[0]
-            color_bags = e[1]
-            if color_bags not in new_colors:
-                new_colors.append(color_bags)
-                return_dict[color_bags]  = int(n_bag)
- 
-    return return_dict
+        if value is None: return
+        else:
+            for e in value:
+                n_bag = e[0]
+                color_bags = e[1]
+                if color_bags not in new_colors:
+                    new_colors.append(color_bags)
+                    return_dict[color_bags]  = int(n_bag) 
+        #print('function out:', return_dict)
+        return return_dict
 
 init_clue = ['shiny gold']
-totalbags = 0
+tier = 0
+solution = []
 
+while True:
+    answer = bagcounter(lst_bag,init_clue)
+    solution.append((tier, answer))
+    tier +=1
+    init_clue = []
+    #print('solution', solution)
+    #print('answer:', answer)
+    if answer is not None:
+        for k in answer:
+            init_clue.append(k)
+    else: break
 
-answer = bagcounter(lst_bag,init_clue)
-    
-
-print(answer)
+print(solution)
