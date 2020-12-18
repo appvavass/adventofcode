@@ -23,7 +23,7 @@ for row in fhandle:
     #lst_bag[bag_color] = rule
     lst_bag[bag_color] = ruleset
         
-print('LIST_BAG',lst_bag)
+#print('LIST_BAG',lst_bag)
 
 def bagcounter(dictionary,color,constant):
 ## This function goes trhough the dictionary and look for the input colors, 
@@ -46,8 +46,14 @@ def bagcounter(dictionary,color,constant):
 new_clue = [('shiny gold',1)]
 
 def finalcounter(color):
-    x = lst_bag.get(color)[0]
-    return x
+    x = lst_bag.get(color)
+    for num, col in x:
+        total = sum(num*finalcounter(col))
+        print(total)
+        return total
 
 ciao  = finalcounter('shiny gold')
-print(ciao)
+#ciao = lst_bag.get('shiny gold')
+ciao2 = lst_bag['shiny gold']
+print('ciao =',ciao)
+print('ciao2 = ', ciao2)

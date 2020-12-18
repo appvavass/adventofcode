@@ -22,6 +22,8 @@ for bag in bags:
 
 print("Part 1: " + str(bag_count - 1))
 
+print('bags:::::::::::', bags)
+
 def count_bags(bag_type):
     return 1 + sum(int(number)*count_bags(colour) for number, colour in bags[bag_type])
 
