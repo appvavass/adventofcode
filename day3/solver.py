@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-init =  open('input.txt')
+init =  open('input_test.txt')
 countrow = 0
 countcol = 0
 
