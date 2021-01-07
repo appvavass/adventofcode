@@ -33,3 +33,4 @@ for e in conversions:
 print('{} jumps of 1, and {} jumps of 3'.format(len(jmp_1),len(jmp_3))) 
 answer = len(jmp_1)*len(jmp_3)  
 print('answer part 1:', answer)     
+print(conversions)
